@@ -13,6 +13,7 @@ import {
   Image,
   NoHead,
   NoPara,
+  TextArea,
 } from './styledComponents'
 
 const Notes = () => {
@@ -30,6 +31,14 @@ const Notes = () => {
     setList(prevState => [...prevState, newList])
     setTitle('')
     setNote('')
+  }
+
+  const onChangeTitle = event => {
+    setTitle(event.target.value)
+  }
+
+  const onChangeNote = event => {
+    setNote(event.target.value)
   }
 
   const renderNoList = () => (
@@ -54,12 +63,22 @@ const Notes = () => {
   return (
     <MainCont>
       <MainHead>Notes</MainHead>
-      <SubCont>
-        <Input type="text" value={title} placeholder="Title" />
-        <Input type="text-area" value={note} placeholder="Take a Note..." />
-        <Button onClick={onClickAdd} type="button">
-          Add
-        </Button>
+      <SubCont onSubmit={onClickAdd}>
+        <Input
+          type="text"
+          value={title}
+          placeholder="Title"
+          onChange={onChangeTitle}
+        />
+        <TextArea
+          type="text-area"
+          cols={50}
+          rows={4}
+          value={note}
+          placeholder="Take a Note..."
+          onChange={onChangeNote}
+        />
+        <Button type="submit">Add</Button>
       </SubCont>
       {list.length > 0 ? renderList() : renderNoList()}
     </MainCont>
