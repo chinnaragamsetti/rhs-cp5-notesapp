@@ -17,7 +17,7 @@ export const MainHead = styled.h1`
   color: blue;
   font-family: 'Bree Serif';
 `
-export const SubCont = styled.div`
+export const SubCont = styled.form`
   box-shadow: 1px 1px 3px 1px lightgrey;
   display: flex;
   flex-direction: column;
